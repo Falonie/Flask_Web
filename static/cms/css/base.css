@@ -1,0 +1,59 @@
+body {
+    /*padding-top: 50px;*/
+    overflow: hidden;
+}
+
+.main{
+    margin-top: 1px;
+    /*padding-top: 1px;*/
+    border: 1px solid;
+    /*overflow: hidden;*/
+    width: 80%;
+}
+
+/*#main{*/
+    /*border: 1px solid;*/
+/*}*/
+
+.sub-header{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-fixed-top {
+    border: 0;
+}
+
+.placeholders h4{
+    margin-bottom: 0;
+}
+
+.placeholder{
+    margin-bottom: 20px;
+}
+
+.placeholder img {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.main_content {
+    margin-top: 20px;
+}
+
+.top-group {
+    padding: 5px 10px;
+    border-radius: 2px;
+    background: #ecedf0;
+    overflow: hidden;
+}
+
+.form-container{
+    width: 300px;
+}
+
+.top-box {
+    overflow: hidden;
+    background: #ecedf0;
+    padding: 10px 10px;
+}

@@ -1,0 +1,63 @@
+{% extends "front/front_base.html" %}
+{% from "common/_macro.html" import static %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ static('front/css/front_article.css') }}">
+    <script src="{{ static('front/js/front_article.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="lg-container">
+        <div class="post-container">
+            <h3>{{ post.title }}</h3>
+            <p class="post-info-group">
+                <span>发表时间{{ post.create_time }}</span>
+                <span>作者{{ post.front_users.username }}</span>
+                <span>所属板块{{ post.boards.name }}</span>
+                <span>阅读数{{ post.read_count }}</span>
+                <span>评论</span>
+            </p>
+            <article class="post-content" id="post-content" data-id="{{ post.id }}">{{ post.content | safe }}</article>
+        </div>
+        {#        <form action="{{ url_for('front.comments') }}" method="post">#}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="comment-group">
+            <h4>评论</h4>
+            <ul class="comment-list-group">
+                {% for comment in post.comments %}
+                    {#                        <li>{{ comment.content }}</li>#}
+                    <li>
+                        <div class="avatar-group">
+                            <img src="{{ static('common/images/02.png') }}" alt="">
+                        </div>
+                        <div class="comment-content">
+                            <p class="comment-txt">{{ comment.content | safe }}</p>
+                            <p class="author-info">
+                                <span>作者 {{ comment.front_users.username }}</span>
+                                <span>评论时间 {{ comment.create_time }}</span>
+                            </p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="add-comment-group">
+            <h3>发表评论</h3>
+            <input type="text" class="form-control" placeholder="评论" name="comment_content">
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <div class="comment-btn-group" style="text-align: right;padding-top: 10px">
+                <button class="btn btn-primary" id="comment-btn">提交</button>
+            </div>
+            {#                <script id="editor" type="text/plain"></script>#}
+        </div>
+        {#        </form>#}
+        {#        <div class="form-group" name="submit" style="text-align: right">#}
+        {#            <button class="btn btn-primary">提交</button>#}
+        {#        </div>#}
+    </div>
+    <div class="sm-container"></div>
+{% endblock %}
